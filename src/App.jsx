@@ -1,12 +1,12 @@
-import './App.css'
 import { Login } from './components/login'
 import { CreateItem } from './components/createItem'
+import { IndexItem } from './components/indexItem'
 function App() {
 
 
   return (
     <div className="App">
-      <CreateItem/>
+      <IndexItem/>
     </div>
   )
 }

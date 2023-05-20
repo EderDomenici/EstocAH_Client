@@ -3,7 +3,7 @@ import axios from "axios";
 
 export function CreateItem(){
     const [descricao, setdescricao] = useState('');
-    const [valorVenda,setvalorVenda] = useState('');
+    const [valor,setvalorVenda] = useState('');
 
 
     function createProduct(e){
@@ -12,8 +12,12 @@ export function CreateItem(){
             alert('Descrição esta vazia ou invalida confira!')
             setdescricao('')
         }
+
+        const valorVenda = !valor ? null : parseFloat(valor);
+
         axios.post("https://estocah.onrender.com/product/create",{descricao,valorVenda})
         .then((response)=>{
+          console.log(response)
           if(response.status === 201){
             alert('Produto Cadastrado')
             setdescricao('')
@@ -40,7 +44,7 @@ export function CreateItem(){
                 <input
                  type="number"
                  placeholder="Valor de Venda"
-                 value={valorVenda}
+                 value={valor}
                  onChange={(e)=>setvalorVenda(e.target.value)}/>
 
                 <button type="submit">Cadastrar Produto</button>
